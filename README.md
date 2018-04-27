@@ -41,7 +41,7 @@ sed 's/;/,/' rdp_16s_v16_reads_50.fa | sed 's/tax=//'| sed 's/:/_/g' | sed 's/_[
 # Write headers into seperate file
 grep ">" rdp_16s_v16_reads_50_clean.fa  | sed 's/,/ /'| sed 's/>//' >fasta_headers.txt
 
-# In remove any taxa information from header lines
+# Remove any taxa information from header lines
 sed -ie 's/,.*//' rdp_16s_v16_reads_50_clean.fa
 ```
 
@@ -133,7 +133,7 @@ for item in headers:
 
 ```
 
-Here, following colors are choosen to color each taxa level.
+The following colors are choosen to color each taxa level.
 
 [More colors are here.](http://etetoolkit.org/docs/latest/reference/reference_treeview.html#color-names)
 
