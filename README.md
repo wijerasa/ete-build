@@ -17,8 +17,8 @@ This project will analyze and visualize a tree constructed from [rdp 16s databas
 
 ```bash
 # Download 16s rdp database
-
 wget https://www.drive5.com/sintax/rdp_16s_v16.fa.gz
+
 # Select only 50 random reads
 reformat.sh in=rdp_16s_v16.fa.gz out=rdp_16s_v16_reads_50.fa sample=50 overwrite=true
 
@@ -26,19 +26,27 @@ reformat.sh in=rdp_16s_v16.fa.gz out=rdp_16s_v16_reads_50.fa sample=50 overwrite
 
 
 
-Align the reads and build the tree using ETE Toolkit
+#### Align the reads and build the tree using ETE Toolkit
 
 Clean the fasta file
 
 
 ```bash
 %%bash 
+# Remove " in the Fasta headers
 sed  -ie 's/\"//g'  rdp_16s_v16_reads_50.fa
+
+#Formant the Fasta headers and remove unwanted characters/strings
 sed 's/;/,/' rdp_16s_v16_reads_50.fa | sed 's/tax=//'| sed 's/:/_/g' | sed 's/_[^~]*\,d/,d/' | sed 's,;,,' > rdp_16s_v16_reads_50_clean.fa
+
+# Write headers into seperate file
 grep ">" rdp_16s_v16_reads_50_clean.fa  | sed 's/,/ /'| sed 's/>//' >fasta_headers.txt
+
+# In remove any taxa information from header lines
 sed -ie 's/,.*//' rdp_16s_v16_reads_50_clean.fa
 ```
 
+For this purpose, basic workflow has been used. [More](http://etetoolkit.org/cookbook/ete_build_basics.ipynb)
 
 ```bash
 %%bash
@@ -48,6 +56,7 @@ ete3 build -w standard_fasttree -n  rdp_16s_v16_reads_50_clean.fa  -o ./rdp_16s_
 
 ### Display tree 
 
+Following code will display the image of the Aliignment.
 
 ```python
 from IPython.display import Image
@@ -113,7 +122,7 @@ def remove_level_identification_char(string):
         
 
 for item in headers:
-    #temp dictionary to hold taxa
+    #temp dictionary to hold taxa levels
     temp={}
     node,taxa=item.split()
     level_seperated =  taxa.split(",")[:-1]
@@ -128,7 +137,9 @@ for item in headers:
 
 ```
 
-[Colour Palatte is here.](http://etetoolkit.org/docs/latest/reference/reference_treeview.html#color-names)
+Here, following colors are choosen to color each taxa level.
+
+[More colour are here.](http://etetoolkit.org/docs/latest/reference/reference_treeview.html#color-names)
 
 
 ```python
@@ -141,23 +152,41 @@ def custom_layout(node):
     if node.is_leaf():
         # Add an static face that handles the node name
         faces.add_face_to_node(nameFace, node, column=0)
+        
+        # Get the taxa levels corresponding to each mnode
         lineage =  header_dict[node.name]
+        
+        # Plot each level with different colors
         for key, level in lineage.items():
-            longNameFace = faces.TextFace(level+" ", fsize=8, fgcolor= "Black")
-            longNameFace.background.color = colour_palatte[key]
-            faces.add_face_to_node(longNameFace, node, column=key,  aligned=True)
+            levelNameFace = faces.TextFace(level+" ", fsize=8, fgcolor= "Black")
+            levelNameFace.background.color = colour_palatte[key]
+            faces.add_face_to_node(levelNameFace, node, column=key,  aligned=True)
             
 ```
 
 
 ```python
 from ete3 import Tree, faces, TreeStyle
+
+# Nodes are colored green
 nameFace = faces.AttrFace("name", fsize=10, fgcolor="#191970")
+
+# TressStyle has been used to customize the image
 ts = TreeStyle()
+
+# Prvents node name showing twice
 ts.show_leaf_name = False
+
+# Shows the Tree branch length
 ts.show_branch_length=True
+
+# Boostrap vales
 ts.show_branch_support = True
+
+# Uses custome layout created previously
 ts.layout_fn = custom_layout
+
+# plots the tree
 tree1.render("%%inline", tree_style=ts)
 ```
 
