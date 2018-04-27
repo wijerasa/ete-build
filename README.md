@@ -180,10 +180,10 @@ ts.show_leaf_name = False
 # Shows the Tree branch length
 ts.show_branch_length=True
 
-# Boostrap vales
+# Boostrap values
 ts.show_branch_support = True
 
-# Uses custome layout created previously
+# Uses Custome ayout created previously
 ts.layout_fn = custom_layout
 
 # plots the tree
