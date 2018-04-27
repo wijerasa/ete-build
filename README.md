@@ -16,6 +16,7 @@ This project will analyze and visualize a tree constructed from [rdp 16s databas
 #### Commands
 
 ```bash
+
 # Download 16s rdp database
 wget https://www.drive5.com/sintax/rdp_16s_v16.fa.gz
 
@@ -65,7 +66,7 @@ Image(filename='rdp_16s_tree/clustalo_default-none-none-fasttree_full/rdp_16s_v1
 
 
 
-### Display tree with Alignment
+### Display Tree with Alignment
 
 
 ```python
@@ -190,9 +191,3 @@ tree1.render("%%inline", tree_style=ts)
 
 ![png](output_14_0.png)
 
-
-
-
-```python
-
-```
