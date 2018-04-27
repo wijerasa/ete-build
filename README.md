@@ -5,11 +5,11 @@ This project will analyze and visualize a tree constructed from [rdp 16s databas
 
 #### Input file
 
-** rdp_16s_v16_reads_50.fa**: Random 50 reads from [rdp 16s database](https://www.drive5.com/sintax/rdp_16s_v16.fa.gz)
+**rdp_16s_v16_reads_50.fa**: Random 50 reads from [rdp 16s database](https://www.drive5.com/sintax/rdp_16s_v16.fa.gz)
 
 #### Tools need
 
-**[reformat.sh](https://jgi.doe.gov/data-and-tools/bbtools/bb-tools-user-guide/reformat-guide/)**:  This will pick 50 random reads from [rdp 16s database]((https://www.drive5.com/sintax/rdp_16s_v16.fa.gz).
+**[reformat.sh](https://jgi.doe.gov/data-and-tools/bbtools/bb-tools-user-guide/reformat-guide/)**:  This will pick 50 random reads from [rdp 16s database](https://www.drive5.com/sintax/rdp_16s_v16.fa.gz).
 
 **[ETE Toolkit](http://etetoolkit.org/docs/latest/index.html)**: Analysis and visualization of trees.
 
