@@ -16,6 +16,9 @@ This project will analyze and visualize a tree constructed from [rdp 16s databas
 #### Commands
 
 ```bash
+# Download 16s rdp database
+
+wget https://www.drive5.com/sintax/rdp_16s_v16.fa.gz
 # Select only 50 random reads
 reformat.sh in=rdp_16s_v16.fa.gz out=rdp_16s_v16_reads_50.fa sample=50 overwrite=true
 
