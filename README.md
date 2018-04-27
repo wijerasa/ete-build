@@ -135,7 +135,7 @@ for item in headers:
 
 Here, following colors are choosen to color each taxa level.
 
-[More colour are here.](http://etetoolkit.org/docs/latest/reference/reference_treeview.html#color-names)
+[More colors are here.](http://etetoolkit.org/docs/latest/reference/reference_treeview.html#color-names)
 
 
 ```python
