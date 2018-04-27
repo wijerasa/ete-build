@@ -24,8 +24,6 @@ reformat.sh in=rdp_16s_v16.fa.gz out=rdp_16s_v16_reads_50.fa sample=50 overwrite
 
 ```
 
-
-
 #### Align the reads and build the tree using ETE Toolkit
 
 Clean the fasta file
@@ -62,9 +60,6 @@ Following code will display the image of the Aliignment.
 from IPython.display import Image
 Image(filename='rdp_16s_tree/clustalo_default-none-none-fasttree_full/rdp_16s_v16_reads_50_clean.fa.final_tree.png')
 ```
-
-
-
 
 ![png](output_6_0.png)
 
