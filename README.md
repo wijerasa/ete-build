@@ -55,7 +55,7 @@ ete3 build -w standard_fasttree -n  rdp_16s_v16_reads_50_clean.fa  -o ./rdp_16s_
 
 ### Display tree 
 
-Following code will display the image of the Aliignment.
+Following code will display the image of the Alignment.
 
 ```python
 from IPython.display import Image
@@ -68,12 +68,20 @@ Image(filename='rdp_16s_tree/clustalo_default-none-none-fasttree_full/rdp_16s_v1
 
 ### Display Tree with Alignment
 
+Also, alignment can plot using ete3 module.
 
 ```python
+# Import Python libraries
 from ete3 import PhyloTree,  TreeStyle
+
+# Import the tree using PhyloTree class
 tree1 = PhyloTree("rdp_16s_tree/clustalo_default-none-none-fasttree_full/rdp_16s_v16_reads_50_clean.fa.final_tree.nw")
+
+# Add alignment
 tree1.link_to_alignment("rdp_16s_tree/clustalo_default-none-none-fasttree_full/rdp_16s_v16_reads_50_clean.fa.final_tree.used_alg.fa")
 #tree1.render(file_name="rdp_alignment_tree.png", dpi=300 , w=1600, h=1000 )
+
+# Render in jupyter notebook
 tree1.render("%%inline", h=150, units="mm", dpi=100)
 ```
 
