@@ -30,7 +30,7 @@ Clean the fasta file
 
 
 ```bash
-%%bash 
+
 # Remove " in the Fasta headers
 sed  -ie 's/\"//g'  rdp_16s_v16_reads_50.fa
 
@@ -47,7 +47,7 @@ sed -ie 's/,.*//' rdp_16s_v16_reads_50_clean.fa
 For this purpose, basic workflow has been used. [More](http://etetoolkit.org/cookbook/ete_build_basics.ipynb)
 
 ```bash
-%%bash
+
 ete3 build -w standard_fasttree -n  rdp_16s_v16_reads_50_clean.fa  -o ./rdp_16s_tree --clearall
 ```
 
